@@ -7,6 +7,7 @@ import Cards from "./pages/Cards"
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ApplyCard from './pages/ApplyCard'
 import Transactions from './pages/Transactions'
+import ApplyLoan from './pages/ApplyLoan'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -20,7 +21,7 @@ function App() {
             <Route path="/newAccount" element={<NewAccount/>} />
             <Route path="/cards" element={<Cards/>} />
             <Route path="/applyCard" element={<ApplyCard/>} />
-            {/* <Route path="/loans" element={<Loans/>} />*/}
+            <Route path="/applyLoan" element={<ApplyLoan/>} />
             <Route path="/transactions" element={<Transactions/>} />
             
           </Route>

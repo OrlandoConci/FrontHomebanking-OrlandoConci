@@ -10,7 +10,7 @@ export const LINKS_HEADER = [
 
     },
     {
-        href:"/loans",
+        href:"/ApplyLoan",
         content: "Loans"
 
     },
