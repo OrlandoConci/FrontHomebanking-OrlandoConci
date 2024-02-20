@@ -8,9 +8,9 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ApplyCard from './pages/ApplyCard'
 import Transactions from './pages/Transactions'
 import ApplyLoan from './pages/ApplyLoan'
+import Login from './pages/Login'
 
 function App() {
-  const [count, setCount] = useState(0)
 
   return (
     <BrowserRouter>
@@ -23,8 +23,8 @@ function App() {
             <Route path="/applyCard" element={<ApplyCard/>} />
             <Route path="/applyLoan" element={<ApplyLoan/>} />
             <Route path="/transactions" element={<Transactions/>} />
-            
           </Route>
+          <Route path="/login" element={<Login/>} />
         </Routes>
     </BrowserRouter>
   )
