@@ -9,6 +9,7 @@ import ApplyCard from './pages/ApplyCard'
 import Transactions from './pages/Transactions'
 import ApplyLoan from './pages/ApplyLoan'
 import Login from './pages/Login'
+import Register from './pages/Register'
 
 function App() {
 
@@ -25,6 +26,7 @@ function App() {
             <Route path="/transactions" element={<Transactions/>} />
           </Route>
           <Route path="/login" element={<Login/>} />
+          <Route path="/register" element={<Register/>} />
         </Routes>
     </BrowserRouter>
   )

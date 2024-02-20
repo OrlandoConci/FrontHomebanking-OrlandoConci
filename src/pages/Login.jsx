@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function Login() {
     return(
@@ -20,7 +21,7 @@ function Login() {
                     <div className="flex flex-col">
                         <button className="border-2 border-black rounded p-2 bg-green-300 font-bold">Login</button>
                         <span className="text-center">o</span>
-                        <button className="text-sm text-red-500 font-bold underline">Create Account</button>
+                        <Link to="/register" className="text-sm text-red-500 text-center font-bold underline">Create Account</Link>
                     </div>
                 </form>
             </div>
