@@ -17,7 +17,7 @@ function AccountDetails() {
     }, [])
 
     return (
-        <main className='flex flex-col gap-5 p-5 bg-green-100'>
+        <main className='min-h-screen flex flex-col gap-5 p-5 bg-green-100'>
             <h1 className='font-bold text-center text-2xl'>Your Selected Account</h1>
             <img src="../public/portada.png"></img>
 

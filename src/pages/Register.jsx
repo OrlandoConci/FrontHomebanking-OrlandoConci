@@ -2,6 +2,11 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 function Register() {
+
+    function handleSubmit (e) {
+        e.preventDefault()
+        console.log(e.target);
+    }
     return (
         <main className="bg-green-100 min-h-screen p-5">
             <img src="../public/register.png" alt="Man and woman using the bank app" />
@@ -10,7 +15,7 @@ function Register() {
                     <img src="../public/logoBanco.png" alt="logo" />
                     <p>Welcome</p>
                 </div>
-                <form className="flex flex-col gap-3">
+                <form className="flex flex-col gap-3" onSubmit={handleSubmit}>
                     <fieldset className="text-center">
                         <label className="text-center">First Name
                             <input className="w-full border-2 border-black" type="text" />

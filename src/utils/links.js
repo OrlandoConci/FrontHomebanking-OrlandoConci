@@ -1,6 +1,11 @@
 export const LINKS_HEADER = [
     {
         href:"/",
+        content: "Dashboard"
+
+    },
+    {
+        href:"/accounts",
         content: "Accounts"
 
     },
@@ -10,12 +15,40 @@ export const LINKS_HEADER = [
 
     },
     {
-        href:"/ApplyLoan",
+        href:"/applyLoan",
         content: "Loans"
 
     },
     {
         href:"/transactions",
+        content: "Transactions"
+
+    }
+]
+
+export const LINKS_HEADER_ADMIN = [
+    {
+        href:"/admin",
+        content: "Dashboard"
+
+    },
+    {
+        href:"/admin/accounts",
+        content: "Accounts"
+
+    },
+    {
+        href:"/admin/cards",
+        content: "Cards"
+
+    },
+    {
+        href:"/admin/pplyLoan",
+        content: "Loans"
+
+    },
+    {
+        href:"/admin/transactions",
         content: "Transactions"
 
     }
