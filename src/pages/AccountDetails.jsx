@@ -9,11 +9,21 @@ function AccountDetails() {
     const [flag, setFlag] = useState(false)
     const navigate = useNavigate()
     const {id} = useParams()
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
-        axios(`http://localhost:8080/api/accounts/`)
-        .then(res => setAccount(res.data.find(account => account.id == id)))
+        axios.get('/api/clients/current/accounts', {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then((res) => {
+            console.log("Entré accountDetails:", res.data);
+
+            setAccount(res.data.find(account => account.id == id))
+        })
         .catch(err => console.log(err))
+
     }, [])
 
     return (
