@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ApplyLoan() {
-    const [actual, setActual] = useState([])
+    let actual = []
     const [current, setCurrent] = useState([])
     const token = localStorage.getItem('token')
     const [loansAvailable, setLoansAvailable] = useState([])
@@ -24,7 +24,15 @@ function ApplyLoan() {
 
                 setLoansAvailable(res.data)
             })
-            .catch(console.log("Loans Available no encontrado"))
+            .catch(err => 
+                {console.log("Loans Available no encontrado")
+                swal({
+                    text: err.response.data,
+                    icon: "error",
+                    button: "accept",
+                    timer: "2000"
+    
+                })})
 
         axios.get('/api/clients/current/', {
             headers: {
@@ -49,9 +57,24 @@ function ApplyLoan() {
             .then((res) => {
                 console.log("Entré loans Request", res.data);
 
-                setLoanRequest(res.data)
+                swal({
+                    text: res.data,
+                    icon: "success",
+                    button: "accept",
+                    timer: "2000"
+    
+                })
             })
-            .catch(console.log("Loans request no encontrado"))
+            .catch(err => {
+                console.log("Loans request no encontrado")
+                swal({
+                    text: err.response.data,
+                    icon: "error",
+                    button: "accept",
+                    timer: "2000"
+    
+                })
+            })
     }
 
     function handleInput(e) {
@@ -61,11 +84,13 @@ function ApplyLoan() {
         if (loanRequest.name != "") {
             loansAvailable.map(loan => {
                 if(loan.name == loanRequest.name) {
-                    setActual(loan)
+                    actual = loan
                 }
             })
         }
-        console.log(actual)
+        console.log("actual", actual)
+        
+        
     }
 
     return (
@@ -82,14 +107,14 @@ function ApplyLoan() {
                 <div className="flex flex-col gap-16">
                     <h1 className="font-serif text-white text-center text-2xl font-bold">Loans Available:</h1>
                     <form className="flex flex-col bg-gray-300 border border-black rounded p-3 gap-5" onSubmit={handleSubmit}>
-                        <select name="loans" id="available" onChange={(e) => console.log([e.target])}>
+                        {/* <select name="loans" id="available" onChange={(e) => console.log([e.target])}>
                         {loansAvailable.length > 0 ? loansAvailable.map((loan) => <option type="checkbox" key={loan.name} value={loan}>Loan = {loan.name}
                                                                                         Max Amount = {loan.maxAmount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}
                                                                                         Payments = {loan.payments.map(pay => pay.toString() + ", " )}</option>) : null}
-                                                                                        </select>
+                                                                                        </select> */}
                         <fieldset className="flex flex-col gap-5 w-full text-center text-lg font-bold">Select loan
                             <select key="hola" className="flex flex-col w-full" name="name" value={loanRequest.name} id="loan" onInput={handleInput}>
-                                {loansAvailable.length > 0 ? loansAvailable.map(loan => <option key={loan.payments} value={loan.name}>{loan.name}</option>) : null}
+                                {Object.keys(loansAvailable).length > 0 ? loansAvailable.map(loan => <option key={loan.payments} value={loan.name}>{loan.name}</option>) : null}
                             </select>
                         </fieldset>
                         <fieldset className="flex flex-col gap-5 w-full text-lg text-center font-bold">Source Account
@@ -98,14 +123,14 @@ function ApplyLoan() {
                                 {Object.keys(current).length > 0 ? current.accounts.map(account => <option key={account.number} value={account.number}>{account.number}</option>) : null}
                             </select>
 
-                            <label className="flex flex-col text-lg">Ammount
+                            <label className="flex flex-col text-lg">Amount
                                 <select placeholder="$" type="number" name="amount" value={loanRequest.amount} onInput={handleInput}>
                                 
-                                    {/* {Object.keys(loansAvailable).length > 0 ? loansAvailable.map(loan => loan.name == loanRequest.name ? loan.payments.map("hola"): null }): null} */}
+                                    {Object.keys(actual).length > 0 ? actual.installments.map(pay => <option key={pay} value={pay}>{pay}</option>) : null}
                                 </select>
                             </label>
                         </fieldset>
-                        <h2 className="font-bold text-center">Payment:</h2>
+                        <h2 className="font-bold text-center"></h2>
                         <select className="flex flex-col w-full" name="installments" value={loanRequest.installments} id="loan" onInput={handleInput}>
 
                             <option key="payments" defaultValue>E.j.: 60 Payments</option>

@@ -57,7 +57,7 @@ function AccountDetails() {
                 </tbody>
                 
             </table>
-            {Object.keys(account).length > 0 && account.transactions.length <= 0 ? <h2>There are no transactions</h2> : null}
+            {Object.keys(account).length > 0 && account.transactions.length <= 0 ? <h2 className='text-red-500'>There are no transactions</h2> : null}
 
             
         </main>

@@ -20,6 +20,13 @@ function Login() {
         .then((res) => {
             console.log("token", res.data)
             dispatch(login(res.data))
+            swal({
+                text: "Session Started",
+                icon: "success",
+                button: "accept",
+                timer: "2000"
+
+            })
             
             if(res.data) {
                 axios.get('/api/clients/current/', {
@@ -36,8 +43,15 @@ function Login() {
                 .catch(console.log("No entraste master"))
             }
         })
-        .catch(err => {console.log(err)
-        return alert("The data entered does not match")})
+        .catch(err => 
+            {console.log(err)
+            swal({
+                text: err.response.data,
+                icon: "error",
+                button: "accept",
+                timer: "2000"
+
+            })})
     }
 
     function handleInput(e) {

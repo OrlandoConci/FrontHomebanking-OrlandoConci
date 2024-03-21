@@ -23,6 +23,13 @@ function Register() {
         e.preventDefault()
         axios.post("/api/auth/register", register)
         .then(res => {
+            swal({
+                text: res.data,
+                icon: "success",
+                button: "accept",
+                timer: "2000"
+
+            })
 
             setEmail(register.email)
             setPassword(register.password)
@@ -33,6 +40,8 @@ function Register() {
             .then((res) => {
                 console.log("token", res.data)
                 dispatch(login(res.data))
+
+                
                 
                 if(res.data) {
                     axios.get('/api/clients/current/', {
@@ -49,10 +58,18 @@ function Register() {
                     .catch(console.log("No entraste master"))
                 }
             })
-            .catch(err => {console.log(err)
-            return alert("The data entered does not match")})
+            .catch(err => {console.log(err) })
         })
-        .catch(err => console.log(err))
+        .catch(err => {
+            console.log(err)
+            swal({
+                text: err.response.data,
+                icon: "error",
+                button: "accept",
+                timer: "2000"
+
+            })
+        })
     }
 
     function handleInput(e) {
@@ -87,10 +104,10 @@ function Register() {
                                 <input className="w-full border-2 border-black" type="Password" name="password" value={register.password} onInput={handleInput} />
                             </label>
                         </fieldset>
-                        <div className="flex flex-col">
+                        <div className="flex flex-col justify-center gap-5">
                             <button type="submit" className="p-2 bg-green-200 border-2 border-black rounded font-bold">Register</button>
                             <span className="text-center">o</span>
-                            <Link to="/login" className="text-center text-red-500 font-bold underline">Login</Link>
+                            <Link to="/login" className=" max-w-20 min-h-11 self-center text-center text-lg px-4 font-bold text-red-500 border border-red-500 shadow-sm shadow-red-500">Login</Link>
                         </div>
                     </form>
                 </div>

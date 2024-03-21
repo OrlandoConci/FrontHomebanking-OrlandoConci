@@ -18,7 +18,16 @@ function Loan() {
 
             setClientCurrent(res.data)
         })
-        .catch(console.log("client curren no encontrado"))
+        .catch(err => {
+            console.log("current client not found")
+            wal({
+                text: err.response.data,
+                icon: "error",
+                button: "accept",
+                timer: "2000"
+
+            })
+        })
     }, [])
 
     return (

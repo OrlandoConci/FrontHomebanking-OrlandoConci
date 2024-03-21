@@ -49,7 +49,7 @@ function Accounts() {
             <img className="rounded" src="../public/portada.png"></img>
             <div className="flex flex-col gap-11">
                 <h2 className="text-2xl text-white font-bold underline">Accounts:</h2>
-                <div className="flex gap-11 items-center">
+                <div className="flex gap-11 items-center justify-center">
                     {
                     Object.keys(current).length > 0 ? current.accounts.map(account => <Account 
                         key={account.id} account={account}/>) : <h1>There are no registered accounts</h1>

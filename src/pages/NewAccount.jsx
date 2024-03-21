@@ -20,8 +20,24 @@ function NewAccount() {
                 .then(res => {
                 console.log(res)
                 setRequest(true)
+                swal({
+                    text: res.data,
+                    icon: "success",
+                    button: "accept",
+                    timer: "2000"
+    
                 })
-                .catch(err => console.log(err))
+                })
+                .catch(err => {
+                    console.log(err)
+                    swal({
+                        text: err.response.data,
+                        icon: "error",
+                        button: "accept",
+                        timer: "2000"
+        
+                    })
+                })
         }
     }
 
