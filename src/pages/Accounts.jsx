@@ -44,7 +44,7 @@ function Accounts() {
         
         <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900" >
             {Object.keys(current).length > 0 ?
-                <h1 className="text-center text-2xl font-bold text-white fint-serif underline">Welcome {current.firstName + ' ' + current.lastName}</h1> : null
+                <h1 className="text-center text-2xl font-bold text-white font-serif underline">Welcome {current.firstName + ' ' + current.lastName}</h1> : null
             }
             <img className="rounded" src="../public/portada.png"></img>
             <div className="flex flex-col gap-11">
@@ -55,7 +55,7 @@ function Accounts() {
                         key={account.id} account={account}/>) : <h1>There are no registered accounts</h1>
                     }
                 </div>
-                <Link to={`/newAccount`} className="self-end max-w-60 max-h-8 text-center text-lg px-4 font-bold text-green-500 shadow-sm shadow-green-500">Open new account</Link>
+                <Link to={`/newAccount`} className="self-end min-w-60 min-h-11 content-center text-center text-lg px-4 font-bold text-green-500 shadow-sm shadow-green-500">Open new account</Link>
             </div>
         </main>
     )

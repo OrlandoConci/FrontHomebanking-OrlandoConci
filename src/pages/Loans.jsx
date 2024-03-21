@@ -22,12 +22,16 @@ function Loan() {
     }, [])
 
     return (
-        <main>
-            <h1>Loans requested</h1>
-            <div>
-                {Object.keys(clientCurrent).length > 0 && clientCurrent.clientloans.length > 0 ? clientCurrent.clientloans.map(loanCurrent => <LoanCurrent key={loanCurrent.name} className="border" name={loanCurrent.name} amount={loanCurrent.amount} payments={loanCurrent.payments}/>) : <h2>you have no outstanding loans</h2> }
+        <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900">
+            <h1 className='text-white font-bold font-serif text-2xl underline text-center my-11'>Loans requested</h1>
+            <div className='flex gap-20 min-w-[600px]'>
+                <img className="rounded w-[800px] object-cover h-[700px]" src="../public/loans.png" alt="Loan Registration Form" />
+
+                <div>
+                    {Object.keys(clientCurrent).length > 0 && clientCurrent.clientloans.length > 0 ? clientCurrent.clientloans.map(loanCurrent => <LoanCurrent key={loanCurrent.name} className="text-white min-w-[600px] min-h-[200px]" name={loanCurrent.name} amount={loanCurrent.amount} payments={loanCurrent.payments}/>) : <h2>you have no outstanding loans</h2> }
+                </div>
             </div>
-            <Link to="/applyLoan">Apply for a new loan</Link>
+            <Link className="self-end  min-w-60 min-h-11 content-center text-center text-lg px-4 font-bold text-green-500 border border-green-500 shadow-sm shadow-green-500" to="/applyLoan">Apply for a new loan</Link>
         </main>
     )
 }

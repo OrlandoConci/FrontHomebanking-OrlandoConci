@@ -1,6 +1,6 @@
 export const withAnimation = (Component) => {
     function Animation () {
-        return <div className="transform animate-bounce">
+        return <div className="">
             <Component/>
         </div>
     }

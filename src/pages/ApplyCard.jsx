@@ -24,10 +24,25 @@ function ApplyCard() {
             }
         })
         .then(res => {
-            alert("successfully created")
+            swal({
+                text: res.data,
+                icon: "success",
+                button: "accept",
+                timer: "2000"
+
+            })
         })
         .catch(err =>
-            console.log(err))
+            {
+                console.log(err)
+                swal({
+                    text: err.response.data,
+                    icon: "error",
+                    button: "accept",
+                    timer: "2000"
+    
+                })
+            })
     }
 
     function redirect() {
@@ -42,14 +57,14 @@ function ApplyCard() {
     console.log(card);
 
     return (
-        <main className="min-h-screen p-5 bg-green-100">
-            <img src="../public/applycard.png" className="w-full" alt="Illustrative image of credit cards and coins" />
-            <div>
-                <form onSubmit={handleSubmit}>
-                    <fieldset>
-                        <legend>Apply for a card</legend>
-                        <label>
-                            <select id="cardTypes" name="transactionType" value={card.transactionType} className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
+        <main className="min-h-screen flex mx-40 gap-5 p-5 bg-gray-900">
+            <img src="../public/applycard.png" className="border border-white w-3/4 max-h-[600px]" alt="Illustrative image of credit cards and coins" />
+            <div className="w-full">
+                <form className="flex flex-col gap-20 border border-black rounded bg-gray-300 min-w-[600px] min-h-[600px] text-xl p-11" onSubmit={handleSubmit}>
+                    <fieldset className="flex flex-col">
+                        <legend className="">Apply for a card</legend>
+                        <label className="mb-20">
+                            <select id="cardTypes" name="transactionType" value={card.transactionType} className="w-full bg-gray-700 border-2 text-white rounded" onInput={handleInput}>
                                 <option defaultValue={"type"}>type</option>
                                 <option>DEBIT</option>
                                 <option>CREDIT</option>
@@ -59,9 +74,9 @@ function ApplyCard() {
                             }
                         </label>
 
-                        <legend className="mt-5">Select card membership (color)</legend>
+                        <legend className="">Select card membership (color)</legend>
                         <label>
-                            <select id="cardColor" name="colorType" value={card.colorType}  className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
+                            <select id="cardColor" name="colorType" value={card.colorType}  className="w-full bg-gray-700 border-2 text-white rounded" onInput={handleInput}>
                                 <option defaultValue={"color"}>color</option>
                                 <option>TITANIUM</option>
                                 <option>GOLD</option>
@@ -73,8 +88,8 @@ function ApplyCard() {
                         </label>
                     </fieldset>
                     <div className="flex gap-5 mt-5 justify-end">
-                        <button type="submit" className="bg-gray-700 border rounded text-white p-1">Apply</button>
-                        <button type="button" className="bg-gray-700 border rounded text-white p-1" onClick={redirect}>Cancel</button>
+                        <button type="submit" className="self-end min-w-60 min-h-11 text-center text-lg px-4 font-bold text-green-500 shadow-lg border border-green-500 shadow-green-500">Apply</button>
+                        <button type="button" className="self-end min-w-60 min-h-11 text-center text-lg px-4 font-bold text-red-500 shadow-lg border border-red-500 shadow-red-500" onClick={redirect}>Cancel</button>
                     </div>
                 </form>
             </div>

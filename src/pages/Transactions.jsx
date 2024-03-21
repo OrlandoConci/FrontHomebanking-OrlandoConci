@@ -58,8 +58,8 @@ function Transactions() {
     }
 
     return (
-        <main className="min-h-screen p-5 bg-green-100 ">
-            <h1 className="font-bold text-xl text-center mb-3">Make a transaction</h1>
+        <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900">
+            <h1 className="font-bold text-white font-serif underline text-2xl text-center mb-3">Make a transaction</h1>
             <div className="flex flex-col gap-3 items-center">
                 <img className="w-[300px] object-contain" src="../public/transaction.png" alt="Mujer en un cajero" />
                 <form className=" flex flex-col gap-5 border border-black rounded bg-gray-300 w-full mx-4" onSubmit={handleSubmit}>
@@ -85,7 +85,7 @@ function Transactions() {
                             <input className="border-2 border-black rounded-xl" type="text" name="description" value={transactionRequest.description} placeholder=" Reason:" onInput={handleInput}/>
                         </label>
                     </fieldset>
-                    <button type="submit">Transfer</button>
+                    <button className="self-end m-2 max-w-[200px] min-w-60 content-center text-center text-lg px-4 font-bold text-green-500 border-2 border-green-500 shadow-sm shadow-green-500" type="submit">Transfer</button>
   
                 </form>
                 

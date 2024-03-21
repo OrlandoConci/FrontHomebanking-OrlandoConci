@@ -10,7 +10,7 @@ function Header() {
         <header className="bg-gray-500">
             <div className="flex justify-between">
                 <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
-                <h1 className="text-green-500 font-bold font-serif text-4xl border-2 px-20 text-center content-center shadow-sm shadow-white m-1">CoinFortress</h1>
+                <h1 className="text-green-500 font-bold font-serif bg-black max-h-11 text-4xl border-2 border-green-500 px-20 text-center content-center shadow-sm shadow-green-500 m-1">CoinFortress</h1>
         
                 <Link to={"/login"} className="max-w-8 max-h-8 rounded rounded-xl bg-white px-1 content-center "><Image src="../../public/cerrarSesion.png" alt="Puerta abierta" /></Link>
             </div>
