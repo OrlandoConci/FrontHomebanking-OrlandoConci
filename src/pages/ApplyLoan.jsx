@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 function ApplyLoan() {
-    let actual = []
+    const [actual, setActual] = useState("")
+    const [payments, setPayments] = useState("")
     const [current, setCurrent] = useState([])
     const token = localStorage.getItem('token')
     const [loansAvailable, setLoansAvailable] = useState([])
@@ -42,7 +43,7 @@ function ApplyLoan() {
             .then((res) => {
                 console.log("Entré current apply loan", res.data);
 
-                setCurrent(res.data)
+                setCurrent(res.data.accounts)
             })
             .catch(console.log("current apply loan no encontrado"))
     }, [])
@@ -80,18 +81,22 @@ function ApplyLoan() {
     function handleInput(e) {
 
         setLoanRequest({ ...loanRequest, [e.target.name]: e.target.value })
+        setActual(loanRequest.name)
         console.log("loanRequest: ",loanRequest)
-        if (loanRequest.name != "") {
-            loansAvailable.map(loan => {
-                if(loan.name == loanRequest.name) {
-                    actual = loan
-                }
-            })
-        }
-        console.log("actual", actual)
-        
-        
     }
+
+    useEffect(() => {
+        if (actual !== "") {
+            const loanPayments = loansAvailable.find(loan => {loan.name == actual.name})
+        
+            if (loanPayments) {
+                setPayments(loanPayments.payments)
+            }
+        } else {
+            setPayments([])
+        }
+    }, [actual, loansAvailable]);
+    
 
     return (
           
@@ -107,11 +112,11 @@ function ApplyLoan() {
                 <div className="flex flex-col gap-16">
                     <h1 className="font-serif text-white text-center text-2xl font-bold">Loans Available:</h1>
                     <form className="flex flex-col bg-gray-300 border border-black rounded p-3 gap-5" onSubmit={handleSubmit}>
-                        {/* <select name="loans" id="available" onChange={(e) => console.log([e.target])}>
-                        {loansAvailable.length > 0 ? loansAvailable.map((loan) => <option type="checkbox" key={loan.name} value={loan}>Loan = {loan.name}
-                                                                                        Max Amount = {loan.maxAmount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}
-                                                                                        Payments = {loan.payments.map(pay => pay.toString() + ", " )}</option>) : null}
-                                                                                        </select> */}
+                        <div name="loans" id="available"  className="flex">
+                        {Object.keys(loansAvailable).length > 0 ? loansAvailable.map((loan) => <div className="border-2 border-black flex text-black-500 font-bold p-11" key={loan.name} value={loan.name}>{loan.name+'   '}
+                                                                                        Max Amount: {loan.maxAmount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } ) + '   '}
+                                                                                        Payments: {loan.payments.map(pay => pay.toString() + ", " )}</div>) : null}
+                                                                                        </div>
                         <fieldset className="flex flex-col gap-5 w-full text-center text-lg font-bold">Select loan
                             <select key="hola" className="flex flex-col w-full" name="name" value={loanRequest.name} id="loan" onInput={handleInput}>
                                 {Object.keys(loansAvailable).length > 0 ? loansAvailable.map(loan => <option key={loan.payments} value={loan.name}>{loan.name}</option>) : null}
@@ -120,27 +125,17 @@ function ApplyLoan() {
                         <fieldset className="flex flex-col gap-5 w-full text-lg text-center font-bold">Source Account
                             <select className="flex flex-col w-full text-lg" name="numberAccount" value={loanRequest.numberAccount} id="accountOrigin" onInput={handleInput}>
                             
-                                {Object.keys(current).length > 0 ? current.accounts.map(account => <option key={account.number} value={account.number}>{account.number}</option>) : null}
+                                {Object.keys(current).length > 0 ? current.map(account => <option key={account.number} value={account.number}>{account.number}</option>) : null}
                             </select>
 
                             <label className="flex flex-col text-lg">Amount
-                                <select placeholder="$" type="number" name="amount" value={loanRequest.amount} onInput={handleInput}>
-                                
-                                    {Object.keys(actual).length > 0 ? actual.installments.map(pay => <option key={pay} value={pay}>{pay}</option>) : null}
-                                </select>
+                                <input placeholder="$" type="number" name="amount" value={loanRequest.amount} onInput={handleInput}></input>
                             </label>
                         </fieldset>
                         <h2 className="font-bold text-center"></h2>
-                        <select className="flex flex-col w-full" name="installments" value={loanRequest.installments} id="loan" onInput={handleInput}>
-
-                            <option key="payments" defaultValue>E.j.: 60 Payments</option>
-                            <option key="6" value="6">6</option>
-                            <option key="12" value="12">12</option>
-                            <option key="24" value="24">24</option>
-                            <option key="36" value="36">36</option>
-                            <option key="48" value="48">48</option>
-                            <option key="60" value="60">60</option>
-                        </select>
+                        <label className="flex flex-col text-lg">Payments
+                                <input placeholder="payments" type="number" name="installments" value={loanRequest.installments} onInput={handleInput}></input>
+                            </label>
                         <button className="self-end  min-w-60 min-h-11 content-center text-center text-lg px-4 font-bold text-green-500 border border-green-500 shadow-sm shadow-green-500" type="submit">Submit</button>
                     </form>
                 </div>

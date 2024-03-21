@@ -73,7 +73,7 @@ function Transactions() {
                         <h2 className="text-center font-bold">Account Origin</h2>
                         <select className="w-full border-2 border-black rounded-xl" name="numberOrigin" value={transactionRequest.numberOrigin} id="account" onInput={handleInput}>
                             <option className="" key={"accountType"} value="AccountType" defaultValue={"HOLA"}>number</option>
-                            {clients.length > 0 ? clients.accounts.map(account => <option className="text-black-200 " value={account.number} key={account.id} >{account.number}</option>) : null}
+                            {Object.keys(clients).length > 0 ? clients.accounts.map(account => <option className="text-black-200 " value={account.number} key={account.id} >{account.number}</option>) : null}
                         </select>
                     </fieldset>
                     <fieldset className="w-full p-1">

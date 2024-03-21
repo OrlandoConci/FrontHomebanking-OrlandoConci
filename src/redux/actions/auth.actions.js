@@ -19,11 +19,12 @@ const login = createAction('LOGIN', (token) => {
     localStorage.setItem('token', token)
     return {
         payload: {
-            token,
-            timestamps: Date.now()
+            token: null,
+            timestamps: false
         }
     }
 })
+
 
 const actions = {
     current,
