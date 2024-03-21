@@ -1,37 +1,37 @@
 import React from "react";
 import { useState } from 'react'
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function ApplyCard() {
 
     const [card, setCard] = useState({
 
-        types: "",
-        colors: ""
+        transactionType: "",
+        colorType: ""
 
     })
+    const navigate = useNavigate()
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
 
-        console.log(card);
+        console.log(localStorage.getItem("token"));
 
-        axios.post("http://localhost:8080/card", card, {
+        await axios.post("http://localhost:8080/api/clients/current/cards", card, {
             headers: {
-                Authorization: localStorage.getItem("token")
+                Authorization: `Bearer ${localStorage.getItem("token")}`
             }
         })
         .then(res => {
             alert("successfully created")
         })
-        .catch(err => console.log(err))
+        .catch(err =>
+            console.log(err))
+    }
 
-        setCard({
-
-            types: "",
-            colors: ""
-    
-        })
+    function redirect() {
+        navigate('/cards')
     }
 
     function handleInput(e) {
@@ -49,32 +49,32 @@ function ApplyCard() {
                     <fieldset>
                         <legend>Apply for a card</legend>
                         <label>
-                            <select id="cardTypes" name="types" value={card.types} className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
+                            <select id="cardTypes" name="transactionType" value={card.transactionType} className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
                                 <option defaultValue={"type"}>type</option>
-                                <option>Débito</option>
-                                <option>Crédito</option>
+                                <option>DEBIT</option>
+                                <option>CREDIT</option>
                             </select>
                             {
-                                card.types == "" || card.types == "type" ? <h3 className="text-red-500 font-xs font-thin">Select an option</h3> : null
+                                card.transactionType == "" || card.transactionType == "transactionType" ? <h3 className="text-red-500 font-xs font-thin">Select an option</h3> : null
                             }
                         </label>
 
                         <legend className="mt-5">Select card membership (color)</legend>
                         <label>
-                            <select id="cardColor" name="colors" value={card.colors}  className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
+                            <select id="cardColor" name="colorType" value={card.colorType}  className="w-full bg-gray-700 border-2 text-white rounded-2xl" onInput={handleInput}>
                                 <option defaultValue={"color"}>color</option>
-                                <option>Titanium</option>
-                                <option>Gold</option>
-                                <option>Silver</option>
+                                <option>TITANIUM</option>
+                                <option>GOLD</option>
+                                <option>SILVER</option>
                             </select>
                             {
-                                card.colors == "" || card.colors == "color" ? <h3 className="text-red-500 font-xs font-thin">Select an option</h3> : null
+                                card.colorType == "" || card.colorType == "colorType" ? <h3 className="text-red-500 font-xs font-thin">Select an option</h3> : null
                             }
                         </label>
                     </fieldset>
                     <div className="flex gap-5 mt-5 justify-end">
-                        <button className="bg-gray-700 border rounded text-white p-1">Apply</button>
-                        <button className="bg-gray-700 border rounded text-white p-1">Cancel</button>
+                        <button type="submit" className="bg-gray-700 border rounded text-white p-1">Apply</button>
+                        <button type="button" className="bg-gray-700 border rounded text-white p-1" onClick={redirect}>Cancel</button>
                     </div>
                 </form>
             </div>

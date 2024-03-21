@@ -15,7 +15,7 @@ export const LINKS_HEADER = [
 
     },
     {
-        href:"/applyLoan",
+        href:"/loans",
         content: "Loans"
 
     },
@@ -43,7 +43,7 @@ export const LINKS_HEADER_ADMIN = [
 
     },
     {
-        href:"/admin/pplyLoan",
+        href:"/admin/loans",
         content: "Loans"
 
     },

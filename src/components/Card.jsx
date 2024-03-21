@@ -1,6 +1,8 @@
 import React, {useState, useEffect} from "react";
 
 function Card({card}) {
+    let [mostrar, setMostrar] = useState(false)
+
     let style = ""
     switch (card.color) {
         case "GOLD":
@@ -13,7 +15,15 @@ function Card({card}) {
             style = "w-80 h-56 m-auto bg-gradient-to-r from-black via-gray-900 to-gray-700 rounded-xl relative text-white shadow-2xl transition-transform transform hover:scale-110"
             break;
     }
-        
+    
+    function viewCvv(e) {
+        if(mostrar) {
+            setMostrar(false)
+        } else {
+            setMostrar(true)
+        }
+    }
+
     return (
         <div className={style}>
             
@@ -58,11 +68,11 @@ function Card({card}) {
                         </div>
 
                         <div className="">
-                            <p className="font-light text-xs">
+                            <p className="font-light text-xs" onClick={viewCvv}>
                                 CVV
                             </p>
-                            <p className="font-bold tracking-more-wider text-sm">
-                                ···
+                            <p className="font-bold tracking-more-wider text-sm" onClick={viewCvv}>
+                                {mostrar ? card.cvv : "...."}
                             </p>
                         </div>
                     </div>

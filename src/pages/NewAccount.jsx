@@ -5,15 +5,23 @@ function NewAccount() {
 
     const [afirmate, setAfirmate] = useState(false)
     const [pressed, setPressed] = useState(false)
-    const
+    const [request, setRequest] = useState(false)
+    const token = localStorage.getItem('token')
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
         setPressed(true)
         if(afirmate) {
-            axios.post("/api/clients/current/")
-            .then(res => console.log(res))
-            .catch(err => console.log(err))
+            console.log("entré");
+            axios.post("/api/clients/current/accounts", "",{
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }})
+                .then(res => {
+                console.log(res)
+                setRequest(true)
+                })
+                .catch(err => console.log(err))
         }
     }
 
@@ -35,6 +43,7 @@ function NewAccount() {
                 {/* {console.log("afirmete", afirmate)}
                 {console.log("pressed", pressed)} */}
                 {!afirmate && pressed ? <h3>You must accept the terms and conditions</h3> : null}
+                {request ? <h2></h2> : null}
             </div>
             
         </main>

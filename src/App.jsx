@@ -9,6 +9,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import ApplyCard from './pages/ApplyCard'
 import Transactions from './pages/Transactions'
 import ApplyLoan from './pages/ApplyLoan'
+import Loans from './pages/Loans'
 import Login from './pages/Login'
 import Register from './pages/Register'
 import Dashboard from './pages/Dashboard'
@@ -24,6 +25,7 @@ const LINKS_PROTECTED = [
   {path: "/newAccount", element: NewAccount},
   {path: "/cards", element: Cards},
   {path: "/applyCard", element: ApplyCard},
+  {path: "/loans", element: Loans},
   {path: "/applyLoan", element: ApplyLoan},
   {path: "/transactions", element: Transactions},
 

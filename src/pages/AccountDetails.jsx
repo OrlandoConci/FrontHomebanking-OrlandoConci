@@ -56,7 +56,10 @@ function AccountDetails() {
                     </tr>) : null}
                     
                 </tbody>
+                
             </table>
+            {Object.keys(account).length > 0 && account.transactions.length <= 0 ? <h2>There are no transactions</h2> : null}
+
             
         </main>
     )

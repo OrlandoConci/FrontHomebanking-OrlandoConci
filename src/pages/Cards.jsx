@@ -4,12 +4,17 @@ import Card from "../components/Card";
 import { Link } from "react-router-dom";
 
 function Cards() {
-    const [clients, setClients] = useState([])
+    const [cards, setCards] = useState([])
     const [loading, setLoading] = useState([false])
+    const token = localStorage.getItem('token')
 
     useEffect(() => {
-        axios("http://localhost:8080/api/clients/cards")
-        .then(res => {setClients(res.data)})
+        axios("http://localhost:8080/api/clients/current/cards", {
+            headers:{
+                Authorization: `Bearer ${token}`
+            }
+        })
+        .then(res => {setCards(res.data)})
         .catch(err => console.log(err))
         .finally(() => setLoading(false))
     }, [])
@@ -25,7 +30,7 @@ function Cards() {
             <h1 className="font-bold text-center">Your Cards</h1>
             <div className="flex flex-col gap-5">
             {
-                clients.length > 0 ? clients[0].cards.map(card => <Card key={card.id} card={card}></Card>) : <h1>No cards registered</h1>
+                cards.length > 0 ? cards.map(card => <Card key={card.id} card={card}></Card>) : <h1>No cards registered</h1>
             }
             </div>
             <Link to="/applyCard" className="underline text-end text-red-500">Apply for a card</Link>
