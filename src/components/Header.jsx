@@ -7,17 +7,18 @@ import cerrarSesion from "../../public/cerrarSesion.png"
 
 function Header() {
     return (
-        <header className="bg-gray-700">
+        <header className="bg-gray-500">
             <div className="flex justify-between">
-                <Image src={"../../public/logoBanco.png"} className="size-9"></Image>
-                <h1 className="text-white font-bold">National Bank</h1>
-                <Link to={"/login"} className="size-7"><Image src="../../public/cerrarSesion.png" alt="Puerta abierta" /></Link>
+                <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
+                <h1 className="text-green-500 font-bold font-serif text-4xl border-2 px-20 text-center content-center shadow-sm shadow-white m-1">CoinFortress</h1>
+        
+                <Link to={"/login"} className="max-w-8 max-h-8 rounded rounded-xl bg-white px-1 content-center "><Image src="../../public/cerrarSesion.png" alt="Puerta abierta" /></Link>
             </div>
             
-            <nav className="flex gap-2 p-5">
+            <nav className="flex gap-40 items-center justify-center h-16 bg-gray-700">
                 {
                     LINKS_HEADER.map((link) => {
-                        return (<Anchor key={link.href} className="border rounded w-[110px] text-center bg-white px-2 font-bold" href={link.href}
+                        return (<Anchor key={link.href} className=" w-40 max-h-8 text-center text-lg px-4 font-bold text-white shadow-sm shadow-white" href={link.href}
                              content={link.content}></Anchor>)
                     })
                 }

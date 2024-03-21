@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from "react";
 import axios from "axios";
+import swal from 'sweetalert';
+import { Button } from "@react-md/button";
 
 function Transactions() {
     const [clients, setClients] = useState([])
@@ -28,8 +30,26 @@ function Transactions() {
                 Authorization: `Bearer ${token}`
             }
         })
-        .then(res => console.log(res))
-        .catch(err => console.log(err))
+        .then(res => {
+            console.log(res)
+            swal({
+                text: res.data,
+                icon: "success",
+                button: "accept",
+                timer: "2000"
+
+            })
+        })
+        .catch(err => {
+            console.log(err)
+            swal({
+                text: err.response.data,
+                icon: "error",
+                button: "accept",
+                timer: "2000"
+
+            })
+        })
     }
 
     function handleInput(e) {
@@ -66,6 +86,7 @@ function Transactions() {
                         </label>
                     </fieldset>
                     <button type="submit">Transfer</button>
+  
                 </form>
                 
             </div>

@@ -1,11 +1,6 @@
 export const LINKS_HEADER = [
     {
         href:"/",
-        content: "Dashboard"
-
-    },
-    {
-        href:"/accounts",
         content: "Accounts"
 
     },

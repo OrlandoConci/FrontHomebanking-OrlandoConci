@@ -27,32 +27,31 @@ function AccountDetails() {
     }, [])
 
     return (
-        <main className='min-h-screen flex flex-col gap-5 p-5 bg-green-100'>
-            <h1 className='font-bold text-center text-2xl'>Your Selected Account</h1>
-            <img src="../public/portada.png"></img>
-
-            {console.log(account)}
-            {
-                Object.keys(account).length > 0 ? <Account key={account.id} account={account}></Account> : null
-            }
-            
-            <h2 className='font-bold'>Transactions Resume:</h2>
+        <main className='min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900'>
+            <h1 className='font-serif font-bold text-center text-white shadow-2xl text-2xl underline'>Your Selected Account</h1>
+            <img className='rounded' src="../public/portada.png"></img>
+            <div className='flex justify-center'>
+                {
+                    Object.keys(account).length > 0 ? <Account key={account.id} account={account}></Account> : null
+                }
+            </div>
+            <h2 className='font-bold text-white font-serif text-xl'>Transactions Resume:</h2>
             <table className="border border-collapse text-sm">
-                <thead className='bg-gray-800 text-white'>
+                <thead className='bg-white text-xl'>
                     <tr>
-                        <th className="border border-black">Type</th>
-                        <th className="border border-black">Amount</th>
-                        <th className="border border-black">Date</th>
-                        <th className="border border-black">Description</th>
+                        <th className="border border-black text-lg">Type</th>
+                        <th className="border border-black text-lg">Amount</th>
+                        <th className="border border-black text-lg">Date</th>
+                        <th className="border border-black text-lg">Description</th>
                     </tr>
                 </thead>
                 <tbody className='bg-gray-100'>
                     {Object.keys(account).length > 0 && account.transactions.length > 0 ?
                      account.transactions.map(transaction => <tr key={transaction.id}>
-                        <td className="border border-black">{transaction.type}</td>
-                        <td className="border border-black">{transaction.amount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</td>
-                        <td className="border border-black">{transaction.date.slice(0,10)}</td>
-                        <td className="border border-black">{transaction.description}</td>
+                        <td className="border border-black text-lg text-end pr-3">{transaction.type}</td>
+                        <td className="border border-black text-lg text-end pr-3">{transaction.amount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</td>
+                        <td className="border border-black text-lg text-end pr-3">{transaction.date.slice(0,10)}</td>
+                        <td className="border border-black text-lg text-end pr-3">{transaction.description}</td>
                     </tr>) : null}
                     
                 </tbody>

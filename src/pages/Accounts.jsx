@@ -42,19 +42,21 @@ function Accounts() {
 
     return (
         
-        <main className="flex flex-col min-h-screen p-5 bg-green-100 gap-5" >
+        <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900" >
             {Object.keys(current).length > 0 ?
-                <h1 className="text-center text-2xl font-bold">Welcome, {current.firstName}</h1> : null
+                <h1 className="text-center text-2xl font-bold text-white fint-serif underline">Welcome {current.firstName + ' ' + current.lastName}</h1> : null
             }
-            <img src="../public/portada.png"></img>
-            <h2 className="text-xl">Accounts:</h2>
-            <div className="flex flex-col gap-11 items-center">
-                {
-                Object.keys(current).length > 0 ? current.accounts.map(account => <Account 
-                    key={account.id} account={account}/>) : <h1>There are no registered accounts</h1>
-                }
+            <img className="rounded" src="../public/portada.png"></img>
+            <div className="flex flex-col gap-11">
+                <h2 className="text-2xl text-white font-bold underline">Accounts:</h2>
+                <div className="flex gap-11 items-center">
+                    {
+                    Object.keys(current).length > 0 ? current.accounts.map(account => <Account 
+                        key={account.id} account={account}/>) : <h1>There are no registered accounts</h1>
+                    }
+                </div>
+                <Link to={`/newAccount`} className="self-end max-w-60 max-h-8 text-center text-lg px-4 font-bold text-green-500 shadow-sm shadow-green-500">Open new account</Link>
             </div>
-            <Link to={`/newAccount`} className="underline text-red-500 text-end">Open new account</Link>
         </main>
     )
 

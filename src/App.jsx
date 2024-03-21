@@ -19,8 +19,7 @@ function App() {
   const DashboardWithAuth = withAuth(Dashboard)
 
 const LINKS_PROTECTED = [
-  {path: "/", element: Dashboard},
-  {path: "/accounts", element: Accounts},
+  {path: "/", element: Accounts},
   {path: "/accounts/:id", element: AccountDetails},
   {path: "/newAccount", element: NewAccount},
   {path: "/cards", element: Cards},

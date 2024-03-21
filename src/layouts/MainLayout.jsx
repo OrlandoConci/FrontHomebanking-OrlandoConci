@@ -6,7 +6,7 @@ import { Outlet } from 'react-router-dom';
 
 function MainLayout(props) {
     return (
-        <div className='main-layout'>
+        <div className='bg-gray-900'>
             <Header/>
             <Outlet />
             <Footer/>
