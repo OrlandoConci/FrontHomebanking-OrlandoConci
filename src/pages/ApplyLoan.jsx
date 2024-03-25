@@ -3,7 +3,7 @@ import axios from "axios";
 
 function ApplyLoan() {
     const [actual, setActual] = useState("")
-    const [payments, setPayments] = useState("")
+    const [loanPayments, setPayments] = useState("")
     const [current, setCurrent] = useState([])
     const token = localStorage.getItem('token')
     const [loansAvailable, setLoansAvailable] = useState([])
@@ -82,21 +82,20 @@ function ApplyLoan() {
 
         setLoanRequest({ ...loanRequest, [e.target.name]: e.target.value })
         setActual(loanRequest.name)
-        console.log("loanRequest: ",loanRequest)
+        console.log("name",loanRequest.name);
     }
 
     useEffect(() => {
-        if (actual !== "") {
-            const loanPayments = loansAvailable.find(loan => {loan.name == actual.name})
-        
-            if (loanPayments) {
-                setPayments(loanPayments.payments)
-            }
-        } else {
-            setPayments([])
+        if (actual == "Personales" || actual == "Hipoteca" || actual == "Automotrices") {
+            console.log("Entré a useEffect");
+            console.log("name adentro",loanRequest.name);
+            const loanPaymentsCurrent = loansAvailable.find(loan => loan.name == actual)
+            
+            setPayments(loanPaymentsCurrent)
+            console.log("loan coincidente", loanPayments);
         }
-    }, [actual, loansAvailable]);
-    
+    })
+        
 
     return (
           
@@ -119,12 +118,13 @@ function ApplyLoan() {
                                                                                         </div>
                         <fieldset className="flex flex-col gap-5 w-full text-center text-lg font-bold">Select loan
                             <select key="hola" className="flex flex-col w-full" name="name" value={loanRequest.name} id="loan" onInput={handleInput}>
+                                <option defaultValue={"type"}>Type</option>
                                 {Object.keys(loansAvailable).length > 0 ? loansAvailable.map(loan => <option key={loan.payments} value={loan.name}>{loan.name}</option>) : null}
                             </select>
                         </fieldset>
                         <fieldset className="flex flex-col gap-5 w-full text-lg text-center font-bold">Source Account
                             <select className="flex flex-col w-full text-lg" name="numberAccount" value={loanRequest.numberAccount} id="accountOrigin" onInput={handleInput}>
-                            
+                                <option defaultValue={"type"}>Account</option>
                                 {Object.keys(current).length > 0 ? current.map(account => <option key={account.number} value={account.number}>{account.number}</option>) : null}
                             </select>
 
@@ -133,9 +133,14 @@ function ApplyLoan() {
                             </label>
                         </fieldset>
                         <h2 className="font-bold text-center"></h2>
-                        <label className="flex flex-col text-lg">Payments
-                                <input placeholder="payments" type="number" name="installments" value={loanRequest.installments} onInput={handleInput}></input>
-                            </label>
+                        <fieldset className="flex flex-col gap-5 w-full text-lg text-center font-bold">Payments
+                                {/* <input placeholder="payments" type="number" name="installments" value={loanRequest.installments} onInput={handleInput}></input> */}
+                                <select className="text-lg font-bold" name="installments" value={loanRequest.installments} id="installments" onInput={handleInput}>
+                                    <option value={"Payments"}>Payments</option>
+                                    {Object.keys(loanPayments).length > 0 ? loanPayments.payments.map(pay => <option key={pay}>{pay}</option>) : null}
+                                
+                                </select>
+                        </fieldset>
                         <button className="self-end  min-w-60 min-h-11 content-center text-center text-lg px-4 font-bold text-green-500 border border-green-500 shadow-sm shadow-green-500" type="submit">Submit</button>
                     </form>
                 </div>
@@ -144,4 +149,4 @@ function ApplyLoan() {
     )
 }
 
-export default ApplyLoan
+export default ApplyLoan;
