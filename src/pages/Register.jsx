@@ -4,6 +4,7 @@ import axios from 'axios'
 import { useDispatch } from "react-redux";
 import authActions from '../redux/actions/auth.actions'
 import Image from "../components/Image";
+import Footer from "../components/Footer";
 
 function Register() {
     const dispatch = useDispatch()
@@ -79,39 +80,41 @@ function Register() {
 
     return (
         <main className="bg-gray-900">
-            <h1 className="text-green-500 font-bold font-serif bg-black max-h-11 text-4xl border-2 border-green-500 px-20 text-center content-center shadow-sm shadow-green-500 m-1">CoinFortress</h1>
-
-            <div className="min-h-screen flex mx-40 gap-5 p-5 bg-gray-900">
-                <img className="w-1/2" src="../public/register.png" alt="Man and woman using the bank app" />
+            <div className="min-h-screen flex mx-40 gap-5 p-5 bg-gray-900 max-[1024px]:mx-0 max-[768px]:flex-col">
+                <img className="w-1/2 max-[768px]:min-w-full max-[768px]:max-h-80 max-[768px]:object-cover" src="../public/register.png" alt="Man and woman using the bank app" />
                 
-                <div className="flex bg-gray-200 rounded p-2 gap-1">
+                <div className="flex flex-col bg-gray-200 rounded p-2 gap-1 items-center">
+                    <img src="../../public/logoHomebanking.png" className="w-80"/>
                     <div>
-                        <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
-                        <p>Welcome</p>
-                    </div>
-                    <form className="flex flex-col gap-11" onSubmit={handleSubmit}>
-                        <fieldset className="text-center">
-                            <label className="text-center">First Name
-                                <input className="w-full border-2 border-black" type="text" name="firstName" value={register.firstName} onInput={handleInput}/>
-                            </label>
-                            <label className="text-center">Last Name
-                                <input className="w-full border-2 border-black" type="text" name="lastName" value={register.lastName} onInput={handleInput} />
-                            </label>
-                            <label className="text-center">E-mail
-                                <input className="w-full border-2 border-black" type="mail" name="email" value={register.email} onInput={handleInput} />
-                            </label>
-                            <label className="text-center">Password
-                                <input className="w-full border-2 border-black" type="Password" name="password" value={register.password} onInput={handleInput} />
-                            </label>
-                        </fieldset>
-                        <div className="flex flex-col justify-center gap-5">
-                            <button type="submit" className="p-2 bg-green-200 border-2 border-black rounded font-bold">Register</button>
-                            <span className="text-center">o</span>
-                            <Link to="/login" className=" max-w-20 min-h-11 self-center text-center text-lg px-4 font-bold text-red-500 border border-red-500 shadow-sm shadow-red-500">Login</Link>
+                        <div>
+                            <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
+                            <p>Welcome</p>
                         </div>
-                    </form>
+                        <form className="flex flex-col gap-11" onSubmit={handleSubmit}>
+                            <fieldset className="text-center">
+                                <label className="text-center">First Name
+                                    <input className="w-full border-2 border-black" type="text" name="firstName" value={register.firstName} onInput={handleInput}/>
+                                </label>
+                                <label className="text-center">Last Name
+                                    <input className="w-full border-2 border-black" type="text" name="lastName" value={register.lastName} onInput={handleInput} />
+                                </label>
+                                <label className="text-center">E-mail
+                                    <input className="w-full border-2 border-black" type="mail" name="email" value={register.email} onInput={handleInput} />
+                                </label>
+                                <label className="text-center">Password
+                                    <input className="w-full border-2 border-black" type="Password" name="password" value={register.password} onInput={handleInput} />
+                                </label>
+                            </fieldset>
+                            <div className="flex flex-col justify-center gap-5">
+                                <button type="submit" className="p-2 bg-green-200 border-2 border-black rounded font-bold">Register</button>
+                                <span className="text-center">o</span>
+                                <Link to="/login" className=" max-w-20 min-h-11 self-center text-center text-lg px-4 font-bold text-red-500 border border-red-500 shadow-sm shadow-red-500">Login</Link>
+                            </div>
+                        </form>
+                    </div>
                 </div>
             </div>
+            <Footer></Footer>
         </main>
     )
 }

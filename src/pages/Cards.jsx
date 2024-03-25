@@ -26,9 +26,9 @@ function Cards() {
     }
 
     return (
-        <main className="min-h-screen flex flex-col mx-40 gap-20 p-5 bg-gray-900">
+        <main className="min-h-screen flex flex-col mx-40 gap-20 p-5 bg-gray-900 max-[768px]:mx-5">
             <h1 className="font-bold font-serif text-white underline text-2xl text-center">Your Cards</h1>
-            <div className="flex">
+            <div className="flex max-[1024px]:flex-wrap max-[768px]:gap-5">
             {
                 cards.length > 0 ? cards.map(card => <Card key={card.id} card={card}></Card>) : <h1>No cards registered</h1>
             }

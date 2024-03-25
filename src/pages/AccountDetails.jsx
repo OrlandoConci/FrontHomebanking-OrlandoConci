@@ -27,8 +27,8 @@ function AccountDetails() {
     }, [])
 
     return (
-        <main className='min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900'>
-            <h1 className='font-serif font-bold text-center text-white shadow-2xl text-2xl underline'>Your Selected Account</h1>
+        <main className='min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900 max-[768px]:mx-5'>
+            <h1 className='font-serif font-bold text-center text-white shadow-2xl text-2xl underline max-[768px]:text-xl'>Your Selected Account</h1>
             <img className='rounded' src="../public/portada.png"></img>
             <div className='flex justify-center'>
                 {
@@ -48,10 +48,10 @@ function AccountDetails() {
                 <tbody className='bg-gray-100'>
                     {Object.keys(account).length > 0 && account.transactions.length > 0 ?
                      account.transactions.map(transaction => <tr key={transaction.id}>
-                        <td className="border border-black text-lg text-end pr-3">{transaction.type}</td>
-                        <td className="border border-black text-lg text-end pr-3">{transaction.amount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</td>
-                        <td className="border border-black text-lg text-end pr-3">{transaction.date.slice(0,10)}</td>
-                        <td className="border border-black text-lg text-end pr-3">{transaction.description}</td>
+                        <td className="border border-black text-lg text-end pr-3 max-[425px]:text-lg">{transaction.type}</td>
+                        <td className="border border-black text-lg text-end pr-3 max-[425px]:text-lg">{transaction.amount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } )}</td>
+                        <td className="border border-black text-lg text-end pr-3 max-[425px]:text-sm">{transaction.date.slice(0,10)}</td>
+                        <td className="border border-black text-lg text-end pr-3 max-[425px]:text-lg">{transaction.description}</td>
                     </tr>) : null}
                     
                 </tbody>

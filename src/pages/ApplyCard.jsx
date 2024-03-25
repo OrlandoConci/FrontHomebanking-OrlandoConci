@@ -57,10 +57,10 @@ function ApplyCard() {
     console.log(card);
 
     return (
-        <main className="min-h-screen flex mx-40 gap-5 p-5 bg-gray-900">
-            <img src="../public/applycard.png" className="border border-white w-3/4 max-h-[600px]" alt="Illustrative image of credit cards and coins" />
-            <div className="w-full">
-                <form className="flex flex-col gap-20 border border-black rounded bg-gray-300 min-w-[600px] min-h-[600px] text-xl p-11" onSubmit={handleSubmit}>
+        <main className="min-h-screen flex mx-40 gap-5 p-5 bg-gray-900 max-[1024px]:mx-5 max-[1024px]:flex-col max-[1024px]:justify-center">
+            <img src="../public/applycard.png" className="border border-white w-3/4 max-h-[600px] max-[1024px]:self-center max-[425px]:w-80" alt="Illustrative image of credit cards and coins" />
+            <div className="w-full max-[1024px]:max-w-60 max-[1024px]:ml-40 max-[768px]:ml-20 max-[425px]:ml-6 max-[375px]:ml-0">
+                <form className="flex flex-col gap-20 border border-black rounded bg-gray-300 min-w-[600px] min-h-[600px] text-xl p-11 max-[768px]:min-w-[520px] max-[425px]:min-w-[300px] max-[425px]:gap-5" onSubmit={handleSubmit}>
                     <fieldset className="flex flex-col">
                         <legend className="">Apply for a card</legend>
                         <label className="mb-20">
@@ -87,7 +87,7 @@ function ApplyCard() {
                             }
                         </label>
                     </fieldset>
-                    <div className="flex gap-5 mt-5 justify-end">
+                    <div className="flex gap-5 mt-5 justify-end max-[768px]:flex-col max-[768px]:self-center">
                         <button type="submit" className="self-end min-w-60 min-h-11 text-center text-lg px-4 font-bold text-green-500 shadow-lg border border-green-500 shadow-green-500">Apply</button>
                         <button type="button" className="self-end min-w-60 min-h-11 text-center text-lg px-4 font-bold text-red-500 shadow-lg border border-red-500 shadow-red-500" onClick={redirect}>Cancel</button>
                     </div>

@@ -105,14 +105,14 @@ function ApplyLoan() {
         // installments:"",
         // numberAccount:""
 
-        <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900">
+        <main className="min-h-screen flex flex-col mx-40 gap-5 p-5 bg-gray-900 max-[768px]:mx-5">
             <h1 className="font-bold font-serif text-white text-2xl text-center underline ">Apply for a loan</h1>
-            <div className="flex gap-20">
-                <img className="rounded w-[800px] object-cover h-[700px]" src="../public/loans.png" alt="Loan Registration Form" />
+            <div className="flex gap-20 max-[1440px]:flex-col">
+                <img className="rounded w-[800px] object-cover h-[700px] max-[1440px]:self-center" src="../public/loans.png" alt="Loan Registration Form" />
                 <div className="flex flex-col gap-16">
                     <h1 className="font-serif text-white text-center text-2xl font-bold">Loans Available:</h1>
                     <form className="flex flex-col bg-gray-300 border border-black rounded p-3 gap-5" onSubmit={handleSubmit}>
-                        <div name="loans" id="available"  className="flex">
+                        <div name="loans" id="available"  className="flex max-[768px]:flex-col">
                         {Object.keys(loansAvailable).length > 0 ? loansAvailable.map((loan) => <div className="border-2 border-black flex text-black-500 font-bold p-11" key={loan.name} value={loan.name}>{loan.name+'   '}
                                                                                         Max Amount: {loan.maxAmount.toLocaleString( 'en-US', { style:'currency', currency:'USD' } ) + '   '}
                                                                                         Payments: {loan.payments.map(pay => pay.toString() + ", " )}</div>) : null}
