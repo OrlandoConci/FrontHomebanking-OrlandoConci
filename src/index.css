@@ -7,8 +7,9 @@
     padding: 0;
     box-sizing: border-box;
 }
-/* inactive w-40 h-9 text-center text-lg px-4 bg-white font-bold text-black shadow-sm shadow-white text-center content-center max-[768px]:w-20 max-[768px]:px-0 max-[768px]:text-sm
+
 .active {
+    background: white;
     width: 160px;
     height: 36px;
     text-align: center;
@@ -16,9 +17,19 @@
     padding-left: 1px;
     padding-right: 1px;
     font-weight: 700;
-    color: rgb(255 255 255);
+    color: black;
     box-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.05);
     text-align: center;
     place-content: center;
     --tw-shadow-color: #fff;
-} */
+    
+}
+
+@media (max-width: 768px) {
+    .active{
+        width: 80px;
+        padding: 0px  0px;
+        font-size: 12px;
+    }
+}
+

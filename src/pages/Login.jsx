@@ -71,10 +71,9 @@ function Login() {
                 <div className="flex flex-col bg-gray-300 rounded p-1 items-center w-1/2 content-center gap-11 max-[1440px]:min-w-[500px] max-[1024px]:gap-2  max-[1024px]:min-h-[500px] max-[1024px]:min-w-96 max-[375px]:min-w-80 max-[375px]:min-h-[600px]">
                         <img src="../../public/logoHomebanking.png" className="w-80"/>
 
-                        <div className="flex flex-wrap gap-5 items-center max-[375px]:justify-center">
-                            <div className="">
-                                <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
-                                <p>Welcome</p>
+         
+                            <div className="self-start font-bold self-center text-xl underline">
+                                <p className="font-bold">Welcome</p>
                             </div>
                             <form className="flex flex-col gap-11 max-[1024px]:gap-5" onSubmit={handleLogin}>
                                 <label className="flex flex-col text-center font-bold">E-mail
@@ -89,7 +88,6 @@ function Login() {
                                     <Link to="/register" className="min-w-40 min-h-11 text-center content-center text-lg px-4 font-bold text-red-500 border border-red-500 shadow-lg">Create Account</Link>
                                 </div>
                             </form>
-                        </div>
                     
                 </div>
             </div>

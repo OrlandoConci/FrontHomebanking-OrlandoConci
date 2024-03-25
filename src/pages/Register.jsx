@@ -87,8 +87,7 @@ function Register() {
                     <img src="../../public/logoHomebanking.png" className="w-80"/>
                     <div>
                         <div>
-                            <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
-                            <p>Welcome</p>
+                            <p className="font-bold text-xl text-center mb-3 underline">Welcome</p>
                         </div>
                         <form className="flex flex-col gap-11" onSubmit={handleSubmit}>
                             <fieldset className="text-center">

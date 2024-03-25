@@ -26,10 +26,10 @@ function Header() {
         <header className="bg-white">
             
             <div className="flex justify-between">
-                <Image src={"../../public/logoBanco.png"} className="size-18 border bg-black m-1"></Image>
-                <img src={"../../public/logoHomebanking.png"} className="h-16" />
+                <div className="max-[425px]:invisible"></div>
+                <img src={"../../public/logoHomebanking.png"} className="h-16 max-[425px]:ml-5" />
         
-                <img onClick={handleClick} className="max-w-8 max-h-8 bg-white px-1 content-center self-center " src="../../public/cerrarSesion.png" alt="Puerta abierta" />
+                <img onClick={handleClick} className="max-w-8 max-h-8 bg-white px-1 self-center" src="../../public/cerrarSesion.png" alt="Puerta abierta" />
             </div>
             
             <nav className="flex gap-40 items-center justify-center h-16 bg-gray-900 max-[1024px]:gap-24 max-[768px]:gap-20 max-[425px]:gap-2">
