@@ -37,7 +37,7 @@ function Loan() {
 
                 <div>
                     <h1 className='text-white font-bold font-serif text-2xl underline text-center my-11 '>Loans requested</h1>
-                    {Object.keys(clientCurrent).length > 0 && clientCurrent.clientloans.length > 0 ? clientCurrent.clientloans.map(loanCurrent => <LoanCurrent key={loanCurrent.name} className="text-white min-w-[600px] min-h-[200px] max-[425px]:min-w-[200px]" name={loanCurrent.name} amount={loanCurrent.amount} payments={loanCurrent.payments}/>) : <h2>you have no outstanding loans</h2> }
+                    {Object.keys(clientCurrent).length > 0 && clientCurrent.clientloans.length > 0 ? clientCurrent.clientloans.map(loanCurrent => <LoanCurrent key={loanCurrent.name} className="text-white min-w-[600px] min-h-[200px] max-[425px]:min-w-[200px]" name={loanCurrent.name} amount={loanCurrent.amount} payments={loanCurrent.payments}/>) : <h2 className="font-bold text-red-500 text-xl">you have no outstanding loans</h2> }
                 </div>
             </div>
             

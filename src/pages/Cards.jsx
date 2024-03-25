@@ -30,7 +30,7 @@ function Cards() {
             <h1 className="font-bold font-serif text-white underline text-2xl text-center">Your Cards</h1>
             <div className="flex max-[1024px]:flex-wrap max-[768px]:gap-5">
             {
-                cards.length > 0 ? cards.map(card => <Card key={card.id} card={card}></Card>) : <h1>No cards registered</h1>
+                cards.length > 0 ? cards.map(card => <Card key={card.id} card={card}></Card>) : <h1 className="font-bold text-red-500 text-xl">No cards registered</h1>
             }
             </div>
             <Link to="/applyCard" className="self-end  min-w-60 min-h-11 content-center text-center text-lg px-4 font-bold text-green-500 border border-green-500 shadow-sm shadow-green-500">Apply for a card</Link>
